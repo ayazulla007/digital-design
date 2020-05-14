@@ -1,0 +1,72 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xbb8730 .scope module, "counter_tb" "counter_tb" 2 2;
+ .timescale 0 0;
+v0xbfeba0_0 .var "clock", 0 0;
+v0xbfec70_0 .net "counter_out", 3 0, v0xbfe9b0_0; 1 drivers
+v0xbfed20_0 .var "enable", 0 0;
+v0xbfedd0_0 .var "reset", 0 0;
+S_0xbb8820 .scope module, "C0" "counter" 2 22, 3 1, S_0xbb8730;
+ .timescale 0 0;
+v0xbee230_0 .net "clock", 0 0, v0xbfeba0_0; 1 drivers
+v0xbfe9b0_0 .var "counter_out", 3 0;
+v0xbfea50_0 .net "enable", 0 0, v0xbfed20_0; 1 drivers
+v0xbfeaf0_0 .net "reset", 0 0, v0xbfedd0_0; 1 drivers
+E_0xbb7f30 .event posedge, v0xbee230_0;
+    .scope S_0xbb8820;
+T_0 ;
+    %wait E_0xbb7f30;
+    %load/v 8, v0xbfeaf0_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0xbfe9b0_0, 1, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0xbfea50_0, 1;
+    %jmp/0xz  T_0.2, 8;
+    %load/v 8, v0xbfe9b0_0, 4;
+    %mov 12, 0, 28;
+    %addi 8, 1, 32;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0xbfe9b0_0, 1, 8;
+T_0.2 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0xbb8730;
+T_1 ;
+    %vpi_call 2 6 "$display", "time\011clock\011reset\011enable\011counter_out";
+    %vpi_call 2 7 "$monitor", "%g\011%b\011%b\011%b\011%b", $time, v0xbfeba0_0, v0xbfedd0_0, v0xbfed20_0, v0xbfec70_0;
+    %set/v v0xbfeba0_0, 1, 1;
+    %set/v v0xbfedd0_0, 0, 1;
+    %set/v v0xbfed20_0, 0, 1;
+    %delay 5, 0;
+    %set/v v0xbfedd0_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0xbfedd0_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0xbfed20_0, 1, 1;
+    %delay 100, 0;
+    %set/v v0xbfed20_0, 0, 1;
+    %delay 5, 0;
+    %vpi_call 2 15 "$finish";
+    %end;
+    .thread T_1;
+    .scope S_0xbb8730;
+T_2 ;
+    %delay 5, 0;
+    %load/v 8, v0xbfeba0_0, 1;
+    %inv 8, 1;
+    %set/v v0xbfeba0_0, 8, 1;
+    %jmp T_2;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "counter_tb.v";
+    "./counter.v";
