@@ -1,0 +1,25 @@
+[*]
+[*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
+[*] Thu May 14 14:20:48 2020
+[*]
+[dumpfile] "/media/ayaz/New Volume/IIT BBS/github/digital-design/counter/waveform.vcd"
+[dumpfile_mtime] "Thu May 14 14:20:18 2020"
+[dumpfile_size] 1349
+[savefile] "/media/ayaz/New Volume/IIT BBS/github/digital-design/counter/config.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-6.318186 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] counter_tb.
+[sst_width] 225
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 160
+@28
+counter_tb.C0.clock
+counter_tb.C0.reset
+counter_tb.C0.enable
+@23
+counter_tb.C0.counter_out[3:0]
+[pattern_trace] 1
+[pattern_trace] 0
